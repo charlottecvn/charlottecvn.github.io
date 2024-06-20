@@ -11,15 +11,15 @@ taxonomies:
 
 menu:
     main:
-        - name: Publications
-          url: papers/
-          weight: 1
-        - name: Talks
-          url: talks/
-          weight: 2
+        - #name: Publications
+          #url: papers/
+          #weight: 1
+        - #name: Talks
+          #url: talks/
+          #weight: 2
         - name: Resume
           url: cv_charlotte.pdf
-          weight: 3
+          weight: 1
 params:
     description: "I am a PhD Candidate in graph-based machine learning."
     author: Name
@@ -52,8 +52,8 @@ params:
           imageHeight: 160
           imageTitle: Charlotte Cambier van Nooten
           buttons:
-            - name: Publications
-              url: papers/
+            #- name: Publications
+            #  url: papers/
             # - name: Courses
             #   url: courses/
             # - name: Data
@@ -62,10 +62,10 @@ params:
            #   url: https://pmichaillat.substack.com
             # - name: Tags
             #   url: tags/
-            - name: Talks
-              url: talks/
-            - name: Resume
-              url: cv_charlotte.pdf
+            #- name: Talks
+            #  url: talks/
+            #- name: Resume
+            #  url: cv_charlotte.pdf
             #- name: Archive
             #  url: archive/
     socialIcons:
@@ -73,17 +73,17 @@ params:
         #   url: cv_rosa.pdf
         - name: Email
           url: mailto:charlotte.cambiervannooten@ru.nl
-        - name: Location
-          url: location/
+        - name: Radboud University
+          url: https://www.ru.nl/personen/cambier-van-nooten-c
     
         - name: Google Scholar
-          url: https://scholar.google.com/
+          url: https://scholar.google.com/citations?user=fv3d8E0AAAAJ&hl=nl
         - name: LinkedIn
-          url: https://linkedin.com/in/charlotecambiervannooten
+          url: https://linkedin.com/in/charlotecvn
         - name: GitHub
           url: https://github.com/charlottecvn
         - name: ORCID
-          url: https://orcid.org/
+          url: https://orcid.org/0000-0001-8057-7333
       
 
     assets:
