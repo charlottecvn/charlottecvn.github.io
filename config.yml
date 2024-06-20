@@ -1,5 +1,5 @@
-baseURL: "https://rosavandenende.github.io/" 
-title: Rosa van den Ende 
+baseURL: "https://charlottecvn.github.io/"
+title: Charlotte Cambier van Nooten
 paginate: 20
 theme: PaperMod
 
@@ -18,14 +18,10 @@ menu:
           url: talks/
           weight: 2
         - name: Resume
-          url: cv_rosa.pdf
-          weight: 3 
-        # - name: Photography
-        #   url: https://pmichaillat.substack.com
-        #   weight: 4
-
+          url: cv_charlotte.pdf
+          weight: 3
 params:
-    description: "I am a PhD Candidate in Mathematical and Environmental Economics."
+    description: "I am a PhD Candidate in graph-based machine learning."
     author: Name
     # googleAnalyticsID: "G-XXXXX"
     DateFormat: "January 2006"
@@ -49,14 +45,12 @@ params:
     math: true
     profileMode:
           enabled: true
-          title: Rosa van den Ende
-          subtitle: "I am a PhD candidate in Mathematical and Environmental Economics at the Centre d'Économie de la Sorbonne (CES), Université Paris I Panthéon-Sorbonne and the Institute of Mathematical Economics, Universität Bielefeld, 
-          under the supervision of Agnieszka Rusinowska and Manuel Förster. I apply game theory and network theory to construct models that can shape effective climate policy. 
-          I am mostly interested in environmental allocation questions and in how to capture the concept of distributive climate justice in mathematics."
-          imageUrl: "picture.jpg"
+          title: Charlotte Cambier van Nooten
+          subtitle: "I am a PhD candidate in graph-based machine learning for energy grids at the Radboud University Nijmegen (RU), Alliander, and the AI for Energy Grids lab."
+          imageUrl: #"picture.jpg"
           imageWidth: 160
           imageHeight: 160
-          imageTitle: Rosa van den Ende
+          imageTitle: Charlotte Cambier van Nooten
           buttons:
             - name: Publications
               url: papers/
@@ -71,25 +65,25 @@ params:
             - name: Talks
               url: talks/
             - name: Resume
-              url: cv_rosa.pdf
+              url: cv_charlotte.pdf
             #- name: Archive
             #  url: archive/
     socialIcons:
         # - name: CV
         #   url: cv_rosa.pdf
         - name: Email
-          url: mailto:rosa.van-den-ende@univ-paris1.fr
+          url: mailto:charlotte.cambiervannooten@ru.nl
         - name: Location
           url: location/
     
         - name: Google Scholar
-          url: https://scholar.google.com/citations?user=jwrYE5sAAAAJ&hl=fr
+          url: https://scholar.google.com/
         - name: LinkedIn
-          url: https://linkedin.com/in/rosavandenende
-        # - name: GitHub
-        #   url: https://github.com/pmichaillat
+          url: https://linkedin.com/in/charlotecambiervannooten
+        - name: GitHub
+          url: https://github.com/charlottecvn
         - name: ORCID
-          url: https://orcid.org/0000-0002-9417-1075
+          url: https://orcid.org/
       
 
     assets:
@@ -99,7 +93,7 @@ params:
         hiddenInList: false
         hiddenInSingle: true
     label:
-      text: "Rosa van den Ende"
+      text: "Charlotte Cambier van Nooten"
       icon: favicon.ico
       iconHeight: 18
 
