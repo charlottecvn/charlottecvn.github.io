@@ -47,7 +47,7 @@ params:
           enabled: true
           title: Charlotte Cambier van Nooten
           subtitle: "I am a PhD candidate in graph-based machine learning for energy grids at the Radboud University Nijmegen (RU), Alliander, and the AI for Energy Grids lab."
-          imageUrl:  #"picture.jpg"
+          imageUrl:  "picture.jpg"
           imageWidth: 160
           imageHeight: 160
           imageTitle: Charlotte Cambier van Nooten
