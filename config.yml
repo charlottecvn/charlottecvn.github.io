@@ -73,8 +73,8 @@ params:
         #   url: cv_rosa.pdf
         - name: Email
           url: mailto:charlotte.cambiervannooten@ru.nl
-        - name: Radboud University
-          url: https://www.ru.nl/personen/cambier-van-nooten-c
+        #- name: Radboud University
+        #  url: https://www.ru.nl/personen/cambier-van-nooten-c
     
         - name: Google Scholar
           url: https://scholar.google.com/citations?user=fv3d8E0AAAAJ&hl=nl
