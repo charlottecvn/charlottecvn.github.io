@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlotte Cambier van Nooten</title>
+<meta name="description" content="Postdoctoral researcher at Radboud University (iCIS, Data Science) and AI FlexLab, working on machine learning for weather and energy systems: load forecasting, grid reliability with graph neural networks, and precipitation nowcasting.">
+<meta property="og:title" content="Charlotte Cambier van Nooten">
+<meta property="og:description" content="Graph neural networks for energy grid reliability · Radboud University">
+<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&family=Spectral:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+/* palette from the thesis print design */
+:root{
+  --paper:#fdf8f6; --blush:#f2d5d3; --petal:#f4dcd6; --rose:#e98895; --coral:#e98895; --coral-text:#b84f64; --cardbg:#ffffff;
+  --saffron:#e7bf6f; --sage:#9bae8e; --dusk:#5d7b86; --cocoa:#80594f;
+  --ink:#3a2a2e; --subgrey:#7b676b; --rule:#ead7d4; --card:#fbeeec;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#1f191b; --blush:#2d2225; --petal:#33272a; --rose:#e98895; --coral:#e98895;
+    --dusk:#93b3bd; --coral-text:#f0a3ae; --cardbg:#291f22; --cocoa:#c49b90; --ink:#f1e6e4; --subgrey:#b09da0;
+    --rule:#3b2f32; --card:#291f22;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#1f191b; --blush:#2d2225; --petal:#33272a; --rose:#e98895; --coral:#e98895;
+  --dusk:#93b3bd; --coral-text:#f0a3ae; --cardbg:#291f22; --cocoa:#c49b90; --ink:#f1e6e4; --subgrey:#b09da0;
+  --rule:#3b2f32; --card:#291f22;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--ink);font:19px/1.6 "Crimson Pro",Georgia,serif;-webkit-font-smoothing:antialiased}
+a{color:var(--coral-text);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--coral)}
+.sans{font-family:"Lato",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto;padding:0 28px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);font-family:"Lato",sans-serif}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:54px;gap:16px}
+nav .name{font-family:"Spectral",serif;font-size:18px;color:var(--ink);text-decoration:none;white-space:nowrap}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+nav ul::-webkit-scrollbar{display:none}
+nav ul a{color:var(--subgrey);text-decoration:none;font-size:13.5px;letter-spacing:.04em;white-space:nowrap}
+nav ul a:hover{color:var(--coral-text)}
+nav ul{margin-left:auto}
+.theme-btn{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--rule);background:transparent;color:var(--subgrey);cursor:pointer;display:grid;place-items:center;padding:0}
+.theme-btn:hover{color:var(--coral-text);border-color:var(--coral-text)}
+.theme-btn svg{width:16px;height:16px;fill:currentColor}
+.theme-btn .i-sun{display:none}
+html.is-dark .theme-btn .i-sun{display:block}
+html.is-dark .theme-btn .i-moon{display:none}
+
+/* hero */
+header.hero{background:var(--blush);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 300px;gap:32px;align-items:center;padding-top:64px;padding-bottom:64px;position:relative}
+.hero h1{font-family:"Spectral",serif;font-weight:300;font-size:clamp(20px,6.6vw,46px);white-space:nowrap;line-height:1.08;margin:0;letter-spacing:.005em}
+.hero .role{font-family:"Lato",sans-serif;font-weight:300;font-size:16px;color:var(--ink);margin:14px 0 22px;letter-spacing:.01em}
+.hero .role b{font-weight:700}
+.hero p.lede{max-width:600px;margin:0 0 26px;font-size:20px}
+.portrait{position:relative;justify-self:center;width:220px;height:220px}
+.portrait img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:6px solid var(--paper);position:relative;z-index:1}
+.links{display:flex;flex-wrap:wrap;gap:10px;font-family:"Lato",sans-serif}
+.links a{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:999px;background:var(--paper);color:var(--ink);text-decoration:none;font-size:13.5px;border:1px solid transparent}
+.links a:hover{border-color:var(--coral-text);color:var(--coral-text)}
+.links svg{width:15px;height:15px;fill:currentColor}
+
+/* chapter-style section openings */
+section{padding:72px 0;border-bottom:1px solid var(--rule)}
+.opening{display:grid;grid-template-columns:auto 1fr;align-items:end;gap:20px;margin-bottom:34px}
+.opening .num{font-family:"Spectral",serif;font-style:italic;font-weight:300;font-size:64px;line-height:.8;color:var(--subgrey)}
+.opening h2{font-family:"Lato",sans-serif;font-weight:700;font-size:28px;margin:0;line-height:1.15}
+h3.sub{font-family:"Lato",sans-serif;font-size:15px;font-weight:700;color:var(--dusk);margin:40px 0 12px}
+h3.sub:first-of-type{margin-top:0}
+
+/* research */
+.themes{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.theme{background:var(--cardbg);border-radius:4px;padding:22px 26px;border-top:3px solid var(--coral);box-shadow:0 1px 0 var(--rule)}
+.theme h3{font-family:"Lato",sans-serif;font-weight:700;font-size:17px;margin:0 0 6px}
+.theme p{margin:0;font-size:18px}
+
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0}
+.pubs li{display:grid;grid-template-columns:62px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--rule)}
+.pubs li:first-child{border-top:0}
+.yr{font-family:"Spectral",serif;font-style:italic;font-weight:300;font-size:20px;color:var(--subgrey);line-height:1.4}
+.pub-title{font-weight:600;display:block;color:var(--ink);text-decoration:none;line-height:1.35;margin-bottom:2px}
+a.pub-title:hover{color:var(--coral-text)}
+.pub-auth{font-size:17px;color:var(--subgrey)}
+.pub-auth b{color:var(--ink);font-weight:600}
+.pub-venue{font-size:17px;font-style:italic}
+.badges{display:inline-flex;gap:6px;margin-left:4px;vertical-align:2px;font-family:"Lato",sans-serif;font-style:normal}
+.badges a,.badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:3px;background:var(--petal);color:var(--cocoa);text-decoration:none}
+.badges a:hover{background:var(--rose);color:#fff}
+.badge.new{background:var(--coral);color:#fff}
+
+/* timelines */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:grid;grid-template-columns:112px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--rule)}
+.tl li:first-child{border-top:0}
+.tl .when{font-family:"Lato",sans-serif;font-size:13px;color:var(--subgrey);padding-top:4px}
+.tl .what{font-weight:600;line-height:1.35}
+.tl .where{color:var(--dusk);font-size:17px}
+.tl .note{color:var(--subgrey);font-size:17px}
+.tl li.now .when{color:var(--coral-text);font-weight:700}
+
+.talks{list-style:none;margin:0;padding:0;font-size:17.5px}
+.talks li{display:grid;grid-template-columns:50px 1fr;gap:10px;padding:6px 0}
+.talks .y{font-family:"Spectral",serif;font-style:italic;color:var(--subgrey)}
+.talks .v{color:var(--subgrey)}
+details{margin-top:8px;font-family:"Lato",sans-serif}
+details .talks{font-family:"Crimson Pro",serif}
+summary{cursor:pointer;color:var(--coral-text);font-size:14px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ "}
+details[open] summary::before{content:"– "}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;font-family:"Lato",sans-serif}
+.chip{background:var(--petal);color:var(--ink);border-radius:3px;padding:3px 10px;font-size:13px}
+p.small{font-size:17px;margin:0 0 8px}
+
+footer{background:var(--blush);padding:34px 0;font-family:"Lato",sans-serif;font-size:13px;color:var(--subgrey)}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+
+@media (max-width:780px){
+  body{font-size:18px}
+  .wrap{padding:0 16px}
+  nav .name{display:none}
+  .hero .wrap{grid-template-columns:1fr;padding-top:36px;padding-bottom:40px;gap:20px}
+    .portrait{width:132px;height:132px;justify-self:start;order:-1}
+  .themes,.cols{grid-template-columns:1fr}
+  .opening{grid-template-columns:auto 1fr;gap:14px}
+  .opening .num{font-size:46px}
+  .opening h2{font-size:23px}
+    .tl li,.pubs li{grid-template-columns:1fr;gap:2px}
+  section{padding:48px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="name" href="#top">Charlotte Cambier van Nooten</a>
+    <ul>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#cv">CV</a></li>
+    </ul>
+    <button id="theme" class="theme-btn" type="button" aria-label="Toggle dark mode"><svg class="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>Charlotte Cambier van Nooten</h1>
+      <div class="role"><b>Postdoctoral Researcher</b> · Data Science · Institute for Computing and Information Sciences (iCIS), Radboud University</div>
+      <p class="lede">I research machine learning for weather and energy systems. As a postdoc in <b>AI FlexLab</b> (NGF, AIC4NL), I work on AI-based load forecasting for the Dutch energy grid, focusing on hard cases such as extreme weather, grid incidents, and renewable variability, with an emphasis on uncertainty quantification. My PhD developed graph neural networks for assessing power grid reliability, in close collaboration with Alliander and the AI for Energy Grids Lab (ICAI).</p>
+      <div class="links">
+        <a href="mailto:charlotte.cambiervannooten@ru.nl"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v.5l7 4.5 7-4.5V7zm14 2.9-7 4.5-7-4.5V17h14z"/></svg>Email</a>
+        <a href="https://scholar.google.com/citations?user=fv3d8E0AAAAJ"><svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17c0 1.7 3.1 3 7 3s7-1.3 7-3v-3.8l-7 3.8z"/></svg>Scholar</a>
+        <a href="https://orcid.org/0000-0001-8057-7333"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM8.3 7.2a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8zM7.6 10h1.4v7H7.6zm3 0h3.2c2.4 0 3.7 1.6 3.7 3.5 0 2-1.4 3.5-3.7 3.5h-3.2zm1.4 1.3v4.4h1.7c1.6 0 2.3-1 2.3-2.2 0-1.3-.8-2.2-2.3-2.2z"/></svg>ORCID</a>
+        <a href="https://github.com/charlottecvn"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z"/></svg>GitHub</a>
+        <a href="https://www.linkedin.com/in/charlottecvn"><svg viewBox="0 0 24 24"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm1.8 6.8V18h2.7V9.8zm1.4-4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM10.3 9.8V18H13v-4.3c0-1.1.2-2.2 1.6-2.2s1.4 1.3 1.4 2.3V18h2.7v-4.7c0-2.3-.5-4-3.2-4-1.3 0-2.2.7-2.5 1.4V9.8z"/></svg>LinkedIn</a>
+      </div>
+    </div>
+    <div class="portrait"><img src="photo.jpg" alt="Portrait of Charlotte Cambier van Nooten"></div>
+  </div>
+</header>
+
+<main>
+
+<section id="research">
+  <div class="wrap">
+    <div class="opening"><span class="num">01</span><h2>Research</h2></div>
+    <div class="themes">
+      <div class="theme" style="grid-column:1/-1">
+        <h3>Load Forecasting for Hard Cases <span class="badge new" style="margin-left:6px;vertical-align:2px">Postdoc</span></h3>
+        <p>AI-based load forecasting for the Dutch energy grid under extreme weather, grid incidents, and renewable variability, with uncertainty quantification so that forecasts say how much they can be trusted. Part of AI FlexLab (NGF, AIC4NL).</p>
+      </div>
+      <div class="theme">
+        <h3>Grid Reliability with GNNs</h3>
+        <p>Assessing whether medium-voltage cables are n-1 secure directly from grid topology and operating scenarios, using graph isomorphism networks and edge-aware variants trained on real Dutch DSO networks.</p>
+      </div>
+      <div class="theme">
+        <h3>Uncertainty Quantification</h3>
+        <p>Deep ensembles of GNNs that report when a contingency decision is uncertain, so operators know which predictions to trust and which to verify with load-flow analysis.</p>
+      </div>
+      <div class="theme">
+        <h3>Edge-Centric GNNs and Symmetry</h3>
+        <p>Edge classification, endpoint symmetry and weight-space redundancy in edge updates, and adaptive rewiring, making graph models expressive and scalable when the edges carry the label.</p>
+      </div>
+      <div class="theme">
+        <h3>Precipitation Nowcasting</h3>
+        <p>Deep generative models with balanced loss and temperature data for short-term forecasting of high-intensity rainfall from KNMI radar, together with KNMI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publications">
+  <div class="wrap">
+    <div class="opening"><span class="num">02</span><h2>Publications</h2></div>
+
+    <h3 class="sub">Journal Articles</h3>
+    <ul class="pubs">
+      <li><span class="yr">2026</span><div>
+        <a class="pub-title" href="https://doi.org/10.1049/gtd2.70262">Uncertainty Quantification Using GNN Deep Ensembles for Contingency Decisions in the MV-Grid</a>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, van de Poll, T., Heskes, T., and Shapovalova, Y.</div>
+        <div class="pub-venue">IET Generation, Transmission &amp; Distribution, 20(1), e70262 <span class="badges"><a href="https://github.com/charlottecvn/GINenergygrids">code</a><a href="https://doi.org/10.5281/zenodo.23063456">zenodo</a></span></div>
+      </div></li>
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">A Bayesian Spatiotemporal Model for Joint Estimation of Brain Activation and Connectivity in fMRI Studies</span>
+        <div class="pub-auth">Naseri, P., Shapovalova, Y., Bucur, I. G., <b>Cambier van Nooten, C.</b>, Valente, G., and Heskes, T.</div>
+        <div class="pub-venue">Statistics in Medicine, 45(20–22), e70712</div>
+      </div></li>
+      <li><span class="yr">2025</span><div>
+        <a class="pub-title" href="https://doi.org/10.1016/j.apenergy.2025.125401">Graph Neural Networks for Assessing the Reliability of the Medium-Voltage Grid</a>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, van de Poll, T., Füllhase, S., Heres, J., Heskes, T., and Shapovalova, Y.</div>
+        <div class="pub-venue">Applied Energy, 384, 125401 <span class="badges"><a href="https://github.com/charlottecvn/GINenergygrids">code</a><a href="https://doi.org/10.5281/zenodo.23012093">zenodo</a></span></div>
+      </div></li>
+      <li><span class="yr">2023</span><div>
+        <a class="pub-title" href="https://doi.org/10.1175/AIES-D-23-0017.1">Improving Precipitation Nowcasting for High-Intensity Events Using Deep Generative Models with Balanced Loss and Temperature Data: A Case Study in the Netherlands</a>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, Schreurs, K., Wijnands, J. S., Leijnse, H., Schmeits, M., Whan, K., and Shapovalova, Y.</div>
+        <div class="pub-venue">Artificial Intelligence for the Earth Systems, 2(4), e230017</div>
+      </div></li>
+      <li><span class="yr">2023</span><div>
+        <a class="pub-title" href="https://doi.org/10.1016/j.rser.2023.113662">Near Real-Time Predictions of Renewable Electricity Production at Substation Level via Domain Adaptation Zero-Shot Learning in Sequence</a>
+        <div class="pub-auth">Teng, S. Y., <b>Cambier van Nooten, C.</b>, van Doorn, J. M., Ottenbros, A., Huijbregts, M. A. J., and Jansen, J. J.</div>
+        <div class="pub-venue">Renewable and Sustainable Energy Reviews, 186, 113662</div>
+      </div></li>
+    </ul>
+
+    <h3 class="sub">Conference and Workshop Papers</h3>
+    <ul class="pubs">
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">Endpoint Symmetry for Edge Updates: Weight-Space Redundancy in GNNs on Undirected Graphs</span>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, van den Beemt, S., Shapovalova, Y., and Heskes, T.</div>
+        <div class="pub-venue">ICML 2026 Workshop on Weight-Space Symmetries (WSS), Seoul, Korea <span class="badges"><a href="https://github.com/charlottecvn/icml-wss-GNNsymmetry">code</a><a href="https://doi.org/10.5281/zenodo.23063611">zenodo</a></span></div>
+      </div></li>
+      <li><span class="yr">2025</span><div>
+        <span class="pub-title">GNN Deep Ensembles for N-1 Contingency Decisions</span>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, van de Poll, T., Heskes, T., and Shapovalova, Y.</div>
+        <div class="pub-venue">28th International Conference and Exhibition on Electricity Distribution (CIRED 2025), Geneva, pp.&nbsp;2435–2439. IET. <span class="badges"><a href="https://github.com/charlottecvn/GINenergygrids">code</a></span></div>
+      </div></li>
+    </ul>
+
+    <h3 class="sub">Under Review</h3>
+    <ul class="pubs">
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">From Nodes to Edges: Edge-Centric GNNs for Distribution Grid Reliability</span>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, van de Poll, T., Heskes, T., and Shapovalova, Y.</div>
+        <div class="pub-venue">Under review · preprint on SSRN <span class="badges"><a href="https://github.com/charlottecvn/GINEE">code</a><a href="https://doi.org/10.5281/zenodo.23063532">zenodo</a></span></div>
+      </div></li>
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">Where Is the Learning Bottleneck? Diagnosing Multimodal Heavy-Rain Nowcasting on a Transformer Backbone</span>
+        <div class="pub-auth">Shapovalova, Y., <b>Cambier van Nooten, C.</b>, and Whan, K.</div>
+        <div class="pub-venue">Under review</div>
+      </div></li>
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">Edge Classification in Power Grids: A Comparative Study of Graph Representations</span>
+        <div class="pub-auth">Wang, X., <b>Cambier van Nooten, C.</b>, and Lucic, A.</div>
+        <div class="pub-venue">Under review</div>
+      </div></li>
+    </ul>
+
+    <h3 class="sub">Preprints and Working Papers</h3>
+    <ul class="pubs">
+      <li><span class="yr">2026</span><div>
+        <a class="pub-title" href="https://arxiv.org/abs/2602.10754">Exploring the Impact of Adaptive Rewiring in Graph Neural Networks</a>
+        <div class="pub-auth"><b>Cambier van Nooten, C.</b>, Aronis, C., Shapovalova, Y., and Cavallaro, L.</div>
+        <div class="pub-venue">Preprint, arXiv <span class="badges"><a href="https://github.com/christosaronis/RewireGNNs">code</a></span></div>
+      </div></li>
+      <li><span class="yr">2026</span><div>
+        <span class="pub-title">Improving Clinical Predictive Tasks with Ensemble Graph Neural Networks and Sequential Decoding</span>
+        <div class="pub-auth">Mehryar, S., <b>Cambier van Nooten, C.</b>, Shapovalova, Y., and Dumontier, M.</div>
+        <div class="pub-venue">Working paper</div>
+      </div></li>
+    </ul>
+
+    <h3 class="sub">Abstracts</h3>
+    <ul class="pubs">
+      <li><span class="yr">2024</span><div>
+        <span class="pub-title">Improving Precipitation Nowcasting Using Deep Generative Models: A Case-Study and Experiences in R2O</span>
+        <div class="pub-auth">Whan, K., <b>Cambier van Nooten, C.</b>, Schmeits, M., Wijnands, J., Schreurs, K., et al.</div>
+        <div class="pub-venue">EGU General Assembly 2024 (EGU24), Vienna</div>
+      </div></li>
+    </ul>
+  </div>
+</section>
+
+<section id="talks">
+  <div class="wrap">
+    <div class="opening"><span class="num">03</span><h2>Talks and Posters</h2></div>
+    <div class="cols">
+      <div>
+        <h3 class="sub">Oral Presentations</h3>
+        <ul class="talks">
+          <li><span class="y">2025</span><span>De betrouwbaarheid van het energienet <span class="v">— Provinciale Statendag</span></span></li>
+          <li><span class="y">2025</span><span>Deep generative models for precipitation nowcasting in the Netherlands <span class="v">— Workshop AIMET-NL, Texel</span></span></li>
+          <li><span class="y">2025</span><span>GNN deep ensembles for N-1 contingency decisions <span class="v">— CIRED 2025, Geneva</span></span></li>
+          <li><span class="y">2025</span><span>Machine learning for the energy sector <span class="v">— Women in AI for Energy days</span></span></li>
+          <li><span class="y">2024</span><span>Uncertainty quantification using GNN deep ensembles <span class="v">— ELLIS Day, Radboud University</span></span></li>
+          <li><span class="y">2024</span><span>Graph isomorphic networks for the reliability of the energy grid <span class="v">— Research Centre Alliander; Alliander–Radboud–RTE Liège workshop; TU Delft GNN Workshop</span></span></li>
+        </ul>
+        <details>
+          <summary>Earlier talks</summary>
+          <ul class="talks">
+            <li><span class="y">2023</span><span>GNNs for the reliability of the MV energy grid <span class="v">— DTU PES Summer School; Alliander webinar; TU Delft GNN Workshop</span></span></li>
+            <li><span class="y">2022</span><span>Capturing grid topology in machine learning models <span class="v">— Enigma: RTE–Alliander knowledge sharing</span></span></li>
+            <li><span class="y">2022</span><span>Deep generative models for precipitation nowcasting in the Netherlands <span class="v">— IEPG ML Forum, TU Delft</span></span></li>
+          </ul>
+        </details>
+      </div>
+      <div>
+        <h3 class="sub">Posters</h3>
+        <ul class="talks">
+          <li><span class="y">2026</span><span>Endpoint symmetry for edge updates: weight-space redundancy in GNNs <span class="v">— Workshop on Weight-Space Symmetries, ICML 2026, Seoul, Korea</span></span></li>
+          <li><span class="y">2025</span><span>Deep generative models for precipitation nowcasting in the Netherlands <span class="v">— Workshop AIMET-NL, Texel</span></span></li>
+          <li><span class="y">2025</span><span>GNN deep ensembles for N-1 contingency decisions <span class="v">— CIRED 2025, Geneva; CHARGE course, Alliander and Radboud</span></span></li>
+          <li><span class="y">2024</span><span>Uncertainty quantification using GNN deep ensembles <span class="v">— Learning on Graphs (LoG) 2024</span></span></li>
+          <li><span class="y">2024</span><span>GNNs for reliability decisions in the energy grid <span class="v">— ICAI Day</span></span></li>
+          <li><span class="y">2023</span><span>Graph isomorphic networks for the reliability of the energy grid <span class="v">— LoG 2023; ELLIS Day, TU Delft</span></span></li>
+          <li><span class="y">2023</span><span>GNNs for the reliability of the MV energy grid <span class="v">— DTU PES Summer School; ICAI Day; AI for Energy Grids Lab</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="teaching">
+  <div class="wrap">
+    <div class="opening"><span class="num">04</span><h2>Teaching and Supervision</h2></div>
+    <div class="cols">
+      <div>
+        <h3 class="sub">MSc Supervision</h3>
+        <ul class="tl">
+          <li><span class="when">2026</span><div><div class="what">Xue Wang <span class="note">(University of Amsterdam)</span></div><div class="note">Edge-centric classification using subgraph GNNs · co-supervised with A. Lucic</div></div></li>
+          <li><span class="when">2025</span><div><div class="what">Jeroen van der Poel</div><div class="note">Optimising the data generation pipeline for GNNs in energy grid classification · co-supervised with Y. Shapovalova</div></div></li>
+          <li><span class="when">2023</span><div><div class="what">Nathan Golden</div><div class="note">Edge classification using GNNs for n-1 assessment of energy grid reliability · co-supervised with Y. Shapovalova</div></div></li>
+          <li><span class="when">2024 – present</span><div><div class="what">Precipitation nowcasting projects</div><div class="note">Co-supervision of Mats Robben, Pelle Kools, and Sietze van der Vinne</div></div></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub">Teaching</h3>
+        <ul class="tl">
+          <li><span class="when">2022 – present</span><div><div class="what">TA, Statistical Machine Learning</div><div class="where">Radboud University</div><div class="note">Tutorials, Brightspace coordination, and grading</div></div></li>
+          <li><span class="when">2024</span><div><div class="what">IAAIP, Interdisciplinary Advanced AI Project</div><div class="where">TU Delft</div></div></li>
+          <li><span class="when">2023</span><div><div class="what">TA, Machine Learning in Practice</div><div class="where">Radboud University</div></div></li>
+          <li><span class="when">2016</span><div><div class="what">TA, Calculations and Logistics</div><div class="where">Amsterdam University of Applied Sciences</div></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cv">
+  <div class="wrap">
+    <div class="opening"><span class="num">05</span><h2>Curriculum Vitae</h2></div>
+    <div class="cols">
+      <div>
+        <h3 class="sub">Positions</h3>
+        <ul class="tl">
+          <li class="now"><span class="when">2026 – present</span><div><div class="what">Postdoctoral Researcher, Data Science</div><div class="where">Radboud University · iCIS · AI FlexLab (NGF, AIC4NL)</div><div class="note">AI-based load forecasting for the Dutch energy grid in hard cases (extreme weather, grid incidents, and renewable variability), with an emphasis on uncertainty quantification</div></div></li>
+          <li><span class="when">2022 – 2026</span><div><div class="what">PhD Candidate, Data Science</div><div class="where">Radboud University · iCIS · AI for Energy Grids Lab (ICAI)</div><div class="note">Thesis: <i>Grow with the Flow: Scalable Graph Neural Networks for Energy Grid Reliability</i></div></div></li>
+          <li><span class="when">2022</span><div><div class="what">Research Intern, MSc thesis</div><div class="where">Radboud University</div><div class="note">Precipitation nowcasting with deep generative models and KNMI radar data</div></div></li>
+          <li><span class="when">2021 – 2022</span><div><div class="what">Data Science Intern, load forecasting</div><div class="where">Alliander</div><div class="note">Short-term load forecasting on the open-source OpenSTEF platform, and splitting energy forecasts by renewable source</div></div></li>
+          <li><span class="when">2019</span><div><div class="what">Statistics Intern, BSc thesis</div><div class="where">De Nederlandsche Bank (DNB)</div><div class="note">Balance of Payments and Securities statistics</div></div></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="sub">Education</h3>
+        <ul class="tl">
+          <li><span class="when">2022 – 2026</span><div><div class="what">PhD, Data Science</div><div class="where">Radboud University Nijmegen</div></div></li>
+          <li><span class="when">2020 – 2022</span><div><div class="what">MSc Data Science (Computing Science)</div><div class="where">Radboud University Nijmegen</div><div class="note">Thesis: <i>Precipitation nowcasting for high-intensity events using deep generative models</i></div></div></li>
+          <li><span class="when">2019 – 2020</span><div><div class="what">Pre-Master Data Science</div><div class="where">Radboud University Nijmegen</div></div></li>
+          <li><span class="when">2015 – 2019</span><div><div class="what">BSc Applied Mathematics</div><div class="where">Amsterdam University of Applied Sciences</div><div class="note">Thesis: <i>Outlier detection for the Dutch Balance of Payments</i> (DNB)</div></div></li>
+          <li><span class="when">2017 – 2018</span><div><div class="what">Pre-Master Business Analytics</div><div class="where">Vrije Universiteit Amsterdam</div></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cols" style="margin-top:44px">
+      <div>
+        <h3 class="sub">Academic Service</h3>
+        <p class="small"><b>Reviewer:</b> Applied Energy, Applied Intelligence, Advances in Atmospheric Sciences, Journal of Hydrometeorology, AI for the Earth Systems, and Geophysical Research Letters.</p>
+        <p class="small"><b>Organised:</b> GNN Workshop Alliander – Radboud – RTE Liège.</p>
+        <p class="small"><b>Attended:</b> ICML 2026 (Seoul), CIRED 2025, AIMET-NL 2025, Learning on Graphs 2023 and 2024, and the DTU PES Summer School.</p>
+        <p class="small"><b>Member</b> of AIMET-NL (AI for weather forecasting and meteorology in the Netherlands), communication.</p>
+      </div>
+      <div>
+        <h3 class="sub">Skills</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">TensorFlow</span><span class="chip">SQL</span><span class="chip">R</span><span class="chip">LaTeX</span><span class="chip">Java</span><span class="chip">Spark</span>
+        </div>
+        <p class="small" style="margin-top:16px;color:var(--subgrey)">Dutch (native), English (C2, Cambridge CAE), French, and German (basic).</p>
+        <p class="small" style="color:var(--subgrey)">PhD Basic Didactic Skills (2024).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Charlotte Cambier van Nooten</span>
+    <span>Data Science · iCIS · Radboud University, Nijmegen</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById("theme"),
+      mq=window.matchMedia("(prefers-color-scheme: dark)");
+  function isDark(){var t=root.getAttribute("data-theme");return t?t==="dark":mq.matches}
+  function sync(){root.classList.toggle("is-dark",isDark());btn.setAttribute("aria-pressed",isDark())}
+  btn.addEventListener("click",function(){
+    var next=isDark()?"light":"dark";root.setAttribute("data-theme",next);
+    try{localStorage.setItem("theme",next)}catch(e){}
+    sync();
+  });
+  if(mq.addEventListener)mq.addEventListener("change",sync);
+  sync();
+})();
+</script>
+</body>
+</html>
